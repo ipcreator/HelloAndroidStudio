@@ -11,12 +11,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class FirstActivity extends AppCompatActivity {
+public class FirstActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    private static final String TAG = "FirstActivity";
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart");
     }
 
     @Override
@@ -38,14 +46,20 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        Log.d(TAG, "Task id is"+getTaskId());
+        //Log.d(TAG, getClass().getSimpleName());
+
         setContentView(R.layout.first_layout);
 
         Button button1 = (Button) findViewById(R.id.button_1);
         button1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-                startActivityForResult(intent, 1);
+                SecondActivity.actionStart(FirstActivity.this,"data1","data2");
+                //Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                //Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                //startActivityForResult(intent, 1);
                 //String data = "Hello SecondActivity";
                 //Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
                 //intent.putExtra("extra_data", data);
@@ -56,7 +70,7 @@ public class FirstActivity extends AppCompatActivity {
                 // Intent intent = new Intent("me.ipcreator.activitytest.ACTION_START");
                 // intent.addCategory("me.ipcreator.activitytest.MY_CATEGORY");
                 // Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-                startActivity(intent);
+                //startActivity(intent);
                 // Toast.makeText(FirstActivity.this, "You clicked Button 1", Toast.LENGTH_SHORT).show();
                 //finish();
             }
