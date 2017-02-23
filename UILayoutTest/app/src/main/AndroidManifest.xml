@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RelativeLayoutActivity"></activity>
+        <activity android:name=".RelativeLayoutActivity" />
+        <activity android:name=".FrameLayoutActivity" />
+        <activity android:name=".PercentLayoutActivity" />
     </application>
 
 </manifest>

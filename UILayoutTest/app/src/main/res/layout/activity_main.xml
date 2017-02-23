@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/input_message"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="3"
         android:hint="Type something" />
 
     <Button
@@ -17,5 +16,26 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="Send" />
+
+    <Button
+        android:id="@+id/to_relative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="ToRelative" />
+
+    <Button
+        android:id="@+id/to_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="ToFrame" />
+
+    <Button
+        android:id="@+id/to_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="ToPercent" />
 
 </LinearLayout>
