@@ -19,7 +19,6 @@ import java.util.List;
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> {
 
     private List<Fruit> mFruitList;
-
     private static final String TAG = "FruitAdapter";
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -44,7 +43,6 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item,parent,false);
         final ViewHolder holder = new ViewHolder(view);
-        //final parentViewGroup = new ViewGroup();
         final Context context = parent.getContext();
 
         holder.fruitView.setOnClickListener(new View.OnClickListener(){
@@ -52,9 +50,6 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                //Toast.makeText(v.getContext(),"you clicked view"+fruit.getName(), Toast.LENGTH_SHORT).show();
-
-                // 执行窗口切换窗口
                 switchActivity(context,fruit);
             }
         });
@@ -64,9 +59,6 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                //Toast.makeText(v.getContext(),"you clicked image"+fruit.getName(), Toast.LENGTH_SHORT).show();
-
-                // 执行窗口切换窗口
                 switchActivity(context,fruit);
             }
         });
@@ -76,9 +68,6 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                //Toast.makeText(v.getContext(),"you clicked name"+fruit.getName(), Toast.LENGTH_SHORT).show();
-
-                // 执行窗口切换窗口
                 switchActivity(context,fruit);
             }
         });
@@ -100,43 +89,39 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
 
     private void switchActivity(Context context,Fruit fruit)
     {
-        Log.d(TAG, "switchActivity: " + fruit.getName());
-
         switch (fruit.getName()){
             case "Apple":
-                AppleActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Apple",Integer.toString(R.drawable.apple));
                 break;
             case "Banana":
-                BananaActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Banana",Integer.toString(R.drawable.banana));
                 break;
             case "Orange":
-                OrangeActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Orange",Integer.toString(R.drawable.orange));
                 break;
             case "Watermelon":
-                WaterMelonActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Watermelon",Integer.toString(R.drawable.watermelon));
                 break;
             case "Pear":
-                PearActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Pear",Integer.toString(R.drawable.pear));
                 break;
             case "Grape":
-                GrapeActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Grape",Integer.toString(R.drawable.grape));
                 break;
             case "Pineapple":
-                PineAppleActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Pineapple",Integer.toString(R.drawable.pineapple));
                 break;
             case "Strawberry":
-                StrawBerryActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Strawberry",Integer.toString(R.drawable.strawberry));
                 break;
             case "Cherry":
-                CherryActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Cherry",Integer.toString(R.drawable.cherry));
                 break;
             case "Mango":
-                MangoActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Mango",Integer.toString(R.drawable.mango));
                 break;
             default:
             break;
-
         }
-
     }
 }

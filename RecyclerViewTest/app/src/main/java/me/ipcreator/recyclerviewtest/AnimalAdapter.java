@@ -19,7 +19,6 @@ import java.util.List;
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder> {
 
     private List<Animal> mAnimalList;
-
     private static final String TAG="AnimalAdapter";
 
     public AnimalAdapter(List<Animal> animalList){
@@ -38,9 +37,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Animal animal = mAnimalList.get(position);
-                //Toast.makeText(v.getContext(),"you clicked view"+animal.getName(), Toast.LENGTH_SHORT).show();
-
-                // 执行窗口切换窗口
                 switchActivity(context,animal);
             }
         });
@@ -50,9 +46,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Animal animal = mAnimalList.get(position);
-                //Toast.makeText(v.getContext(),"you clicked image"+animal.getName(), Toast.LENGTH_SHORT).show();
-
-                // 执行窗口切换窗口
                 switchActivity(context,animal);
             }
         });
@@ -62,9 +55,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Animal animal = mAnimalList.get(position);
-                //Toast.makeText(v.getContext(),"you clicked name"+animal.getName(), Toast.LENGTH_SHORT).show();
-
-                // 执行窗口切换窗口
                 switchActivity(context,animal);
             }
         });
@@ -100,20 +90,15 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder
 
     private void switchActivity(Context context, Animal animal)
     {
-        Log.d(TAG, "switchActivity: " + animal.getName());
-
         switch (animal.getName()){
             case "Cat":
-                CatActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Cat",Integer.toString(R.drawable.cat));
                 break;
             case "Dog":
-                DogActivity.actionStart(context,null,null);
+                PicViewActivity.actionStart(context,"Dog",Integer.toString(R.drawable.dog));
                 break;
             default:
                 break;
-
         }
-
     }
-
-    }
+}

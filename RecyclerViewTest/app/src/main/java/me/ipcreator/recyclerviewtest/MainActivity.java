@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -18,10 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private List<Fruit> fruitList = new ArrayList<>();
     private List<Animal> animalList = new ArrayList<>();
 
-    final int iChooseFruits = 0;
-    final int iChooseAnimals = 1;
-    final int iChooseCars = 2;
-    final int iChooseFoods = 3;
+    final int ICHOOSEFRUITS = 0;
+    final int ICHOOSEANIMALS = 1;
+    final int ICHOOSECARS = 2;
+    final int ICHOOSEFOODS = 3;
+
+    private static final String TAG = "MainActivity";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,25 +37,20 @@ public class MainActivity extends AppCompatActivity {
 
         switch(item.getItemId()){
             case R.id.fruit_item:
-                //Toast.makeText(this,"You clicked Fruits",Toast.LENGTH_SHORT).show();
-                chooseDataForShow(iChooseFruits);
+                chooseDataForShow(ICHOOSEFRUITS);
                 break;
             case R.id.animal_item:
-                //Toast.makeText(this,"You clicked Animals",Toast.LENGTH_SHORT).show();
-                chooseDataForShow(iChooseAnimals);
+                chooseDataForShow(ICHOOSEANIMALS);
                 break;
             case R.id.car_item:
-                //Toast.makeText(this,"You clicked Cars",Toast.LENGTH_SHORT).show();
-                chooseDataForShow(iChooseCars);
+                chooseDataForShow(ICHOOSECARS);
                 break;
             case R.id.food_item:
-                //Toast.makeText(this,"You clicked Foods",Toast.LENGTH_SHORT).show();
-                chooseDataForShow(iChooseFoods);
+                chooseDataForShow(ICHOOSEFOODS);
                 break;
             default:
                 break;
         }
-
         return true;
     }
 
@@ -60,9 +58,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        chooseDataForShow(iChooseFruits);
-
+        chooseDataForShow(ICHOOSEFRUITS);
+        Log.d(TAG, "onCreate: ");
     }
 
     private void chooseDataForShow(int choose){
@@ -75,49 +72,35 @@ public class MainActivity extends AppCompatActivity {
         animalList.clear();
 
         switch (choose){
-            case iChooseFruits:
+            case ICHOOSEFRUITS:
                 initFruits();
                 FruitAdapter fruitadapter = new FruitAdapter(fruitList);
                 recyclerView.setAdapter(fruitadapter);
                 this.setTitle("Roll and Pick"+"  Fruits");
                 break;
-            case iChooseAnimals:
+            case ICHOOSEANIMALS:
                 initAnimals();
                 AnimalAdapter animaladapter = new AnimalAdapter(animalList);
                 recyclerView.setAdapter(animaladapter);
                 this.setTitle("Roll and Pick"+"  Animals");
                 break;
-            case iChooseCars:
+            case ICHOOSECARS:
                 this.setTitle("Roll and Pick"+"  Cars");
                 break;
-            case iChooseFoods:
+            case ICHOOSEFOODS:
                 this.setTitle("Roll and Pick"+"  Foods");
                 break;
             default:
                 break;
         }
-
     }
 
-    private String getRandomLengthName(String name){
-
-        /*
-        Random random = new Random();
-        int length = random.nextInt(20)+1;
-        StringBuilder builder = new StringBuilder();
-        for(int i = 0; i < length; i++){
-            builder.append(name);
-        }
-        return builder.toString();
-        */
-        return name;
-    }
 
     private void initFruits(){
 
         for(int i = 0; i < 100; i++){
 
-            Fruit apple = new Fruit(getRandomLengthName("Apple"), R.drawable.apple_pic);
+            Fruit apple = new Fruit("Apple", R.drawable.apple_pic);
             fruitList.add(apple);
             Fruit banana = new Fruit("Banana", R.drawable.banana_pic);
             fruitList.add(banana);
@@ -144,12 +127,52 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i = 0; i < 100; i++){
 
-            Animal cat = new Animal(getRandomLengthName("Cat"), R.drawable.cat_pic);
+            Animal cat = new Animal("Cat", R.drawable.cat_pic);
             animalList.add(cat);
-
             Animal dog = new Animal("Dog", R.drawable.dog_pic);
             animalList.add(dog);
-
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        Log.d(TAG, "onBackPressed: ");
     }
 }
