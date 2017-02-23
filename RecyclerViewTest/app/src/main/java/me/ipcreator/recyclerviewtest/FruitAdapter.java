@@ -52,7 +52,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                Toast.makeText(v.getContext(),"you clicked view"+fruit.getName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(v.getContext(),"you clicked view"+fruit.getName(), Toast.LENGTH_SHORT).show();
 
                 // 执行窗口切换窗口
                 switchActivity(context,fruit);
@@ -64,7 +64,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                Toast.makeText(v.getContext(),"you clicked image"+fruit.getName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(v.getContext(),"you clicked image"+fruit.getName(), Toast.LENGTH_SHORT).show();
 
                 // 执行窗口切换窗口
                 switchActivity(context,fruit);
@@ -76,7 +76,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                Toast.makeText(v.getContext(),"you clicked name"+fruit.getName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(v.getContext(),"you clicked name"+fruit.getName(), Toast.LENGTH_SHORT).show();
 
                 // 执行窗口切换窗口
                 switchActivity(context,fruit);
@@ -91,7 +91,6 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
         Fruit fruit = mFruitList.get(position);
         holder.fruiImage.setImageResource(fruit.getImageId());
         holder.fruitName.setText(fruit.getName());
-
     }
 
     @Override

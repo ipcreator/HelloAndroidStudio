@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
-        android:label="Fruits Roll Pick"
+        android:label="Roll and Pick"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -15,17 +15,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AppleActivity" android:label="Apple"/>
-        <activity android:name=".BananaActivity" android:label="Banana"/>
-        <activity android:name=".OrangeActivity" android:label="Orange"/>
-        <activity android:name=".WaterMelonActivity" android:label="WaterMelon"/>
-        <activity android:name=".PearActivity" android:label="Pear"/>
-        <activity android:name=".GrapeActivity" android:label="Grape"/>
-        <activity android:name=".PineAppleActivity" android:label="PineApple"/>
-        <activity android:name=".StrawBerryActivity" android:label="StrawBerry"/>
-        <activity android:name=".CherryActivity" android:label="Cherry"/>
-        <activity android:name=".MangoActivity" android:label="Mango"/>
-
+        <activity
+            android:name=".AppleActivity"
+            android:label="Apple" />
+        <activity
+            android:name=".BananaActivity"
+            android:label="Banana" />
+        <activity
+            android:name=".OrangeActivity"
+            android:label="Orange" />
+        <activity
+            android:name=".WaterMelonActivity"
+            android:label="WaterMelon" />
+        <activity
+            android:name=".PearActivity"
+            android:label="Pear" />
+        <activity
+            android:name=".GrapeActivity"
+            android:label="Grape" />
+        <activity
+            android:name=".PineAppleActivity"
+            android:label="PineApple" />
+        <activity
+            android:name=".StrawBerryActivity"
+            android:label="StrawBerry" />
+        <activity
+            android:name=".CherryActivity"
+            android:label="Cherry" />
+        <activity
+            android:name=".MangoActivity"
+            android:label="Mango" />
+        <activity android:name=".CatActivity" android:label="Cat"/>
+        <activity android:name=".DogActivity" android:label="Dog"></activity>
     </application>
 
 </manifest>
