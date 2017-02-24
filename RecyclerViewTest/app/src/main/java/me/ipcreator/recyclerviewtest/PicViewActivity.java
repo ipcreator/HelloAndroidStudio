@@ -11,7 +11,6 @@ import android.widget.ImageView;
 public class PicViewActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView imageView;
-    private static final String TAG = "PicViewActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,49 +19,6 @@ public class PicViewActivity extends AppCompatActivity implements View.OnClickLi
         imageView = (ImageView)findViewById(R.id.image_common);
         imageView.setOnClickListener(this);
         showNameAndPic();
-        Log.d(TAG, "onCreate: ");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(TAG, "onRestart: ");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart: ");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume: ");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause: ");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop: ");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy: ");
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-        Log.d(TAG, "onBackPressed: ");
     }
 
     public static void actionStart(Context context, String data1, String data2){
@@ -70,6 +26,14 @@ public class PicViewActivity extends AppCompatActivity implements View.OnClickLi
         intent.putExtra("NAME",data1);
         intent.putExtra("IMG",data2);
         context.startActivity(intent);
+    }
+
+    private void showNameAndPic(){
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("NAME");
+        String pic = intent.getStringExtra("IMG");
+        this.setTitle(name);
+        imageView.setImageResource(Integer.parseInt(pic));
     }
 
     @Override
@@ -81,13 +45,5 @@ public class PicViewActivity extends AppCompatActivity implements View.OnClickLi
             default:
                 break;
         }
-    }
-
-    private void showNameAndPic(){
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("NAME");
-        String pic = intent.getStringExtra("IMG");
-        this.setTitle(name);
-        imageView.setImageResource(Integer.parseInt(pic));
     }
 }
