@@ -13,10 +13,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
+import static me.ipcreator.recyclerviewtest.Data.GifMap;
 import static me.ipcreator.recyclerviewtest.Data.PicMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int ICHOOSEANIMALS = 1;
     private static final int ICHOOSECARS = 2;
     private static final int ICHOOSEFOODS = 3;
+    private static final int ICHOOSEGIFS=4;
 
     private List<Item> itemList = new ArrayList<>();
 
@@ -52,14 +56,33 @@ public class MainActivity extends AppCompatActivity {
                 chooseDataForShow(ICHOOSEANIMALS);
                 break;
             case R.id.car_item:
-                //chooseDataForShow(ICHOOSECARS);
-                AnimationActivity.actionStart(this,null,null);
-                Toast.makeText(MainActivity.this,"AnimationActivity.actionStart(this,null,null);",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.food_item:
-                //chooseDataForShow(ICHOOSEFOODS);
-                AnimationActivity.actionStart(this,"Conan",PicMap.get("Conan"));
-                Toast.makeText(MainActivity.this,"AnimationActivity.actionStart(this,\"Conan\",PicMap.get(\"Conan\"));",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.gif_item:
+
+                int size = GifMap.size();
+                Random random=new Random();
+                int result=random.nextInt(size);
+                String tempName = null;
+                String tempGif = null;
+                Object key = null;
+                Object value = null;
+
+                Set keys = GifMap.keySet( );
+
+                if(keys != null) {
+                    Iterator iterator = keys.iterator( );
+                    for(int i =0; i < result; i++ ) {
+                        key = iterator.next( );
+                        value = GifMap.get(key);
+                        iterator.hasNext( );
+                    }
+                }
+                tempName = key.toString();
+                tempGif = value.toString();
+
+                GifDrawActivity.actionStart(this,tempName,tempGif);
                 break;
             default:
                 break;
@@ -70,12 +93,10 @@ public class MainActivity extends AppCompatActivity {
     private void chooseDataForShow(int choose){
 
         itemList.clear();
+
         initList(choose);
 
         switch (choose){
-            case ICHOOSEFRUITS:
-                this.setTitle("Roll and Pick"+"  Fruits");
-                break;
             case ICHOOSEANIMALS:
                 this.setTitle("Roll and Pick"+"  Animals");
                 break;
@@ -85,10 +106,14 @@ public class MainActivity extends AppCompatActivity {
             case ICHOOSEFOODS:
                 this.setTitle("Roll and Pick"+"  Foods");
                 break;
+            case ICHOOSEGIFS:
+                this.setTitle("Roll and Pick"+"  Gifs");
+                break;
+            case ICHOOSEFRUITS:
             default:
                 this.setTitle("Roll and Pick"+"  Fruits");
-                break;
         }
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -113,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case ICHOOSEFOODS:
+                break;
+
+            case ICHOOSEGIFS:
                 break;
 
             case ICHOOSEFRUITS:

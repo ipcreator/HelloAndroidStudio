@@ -9,15 +9,17 @@
         android:label="Roll and Pick"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".PicViewActivity" />
-        <activity android:name=".AnimationActivity"/>
+        <activity android:name=".AnimationActivity" />
+        <activity android:name=".GifActivity" />
+        <activity android:name=".GifDrawActivity"></activity>
     </application>
 
 </manifest>

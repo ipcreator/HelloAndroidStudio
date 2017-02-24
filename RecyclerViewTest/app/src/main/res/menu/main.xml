@@ -11,10 +11,14 @@
         />
     <item
         android:id="@+id/car_item"
-        android:title="Gif"
+        android:title="Cars"
         />
     <item
         android:id="@+id/food_item"
-        android:title="Png"
+        android:title="Foods"
+        />
+    <item
+        android:id="@+id/gif_item"
+        android:title="Gifs"
         />
 </menu>

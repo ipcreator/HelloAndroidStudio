@@ -45,8 +45,23 @@ public class Data {
             put("Mango", Integer.toString(R.drawable.mango));
             put("Cat", Integer.toString(R.drawable.cat));
             put("Dog", Integer.toString(R.drawable.dog));
-            put("Anim", Integer.toString(R.drawable.giftest));
+        }
+    };
+
+    static final Map<String, String> GifMap = new HashMap<String, String>() {
+        {
+            put("Anim", Integer.toString(R.drawable.anim));
             put("Conan", Integer.toString(R.drawable.conan));
+            put("Giftest", Integer.toString(R.drawable.giftest));
+            put("Giftest1", Integer.toString(R.drawable.giftest1));
+            put("Giftest2", Integer.toString(R.drawable.giftest2));
+            put("Gif1", Integer.toString(R.drawable.gif1));
+            put("Gif2", Integer.toString(R.drawable.gif2));
+            put("Gif3", Integer.toString(R.drawable.gif3));
+            put("Gif10", Integer.toString(R.drawable.gif10));
+            put("A", Integer.toString(R.drawable.a));
+            put("Wind", Integer.toString(R.drawable.wind));
+
         }
     };
 }
