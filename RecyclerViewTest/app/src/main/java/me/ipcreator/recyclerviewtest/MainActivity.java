@@ -1,5 +1,6 @@
 package me.ipcreator.recyclerviewtest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import static me.ipcreator.recyclerviewtest.Data.PicMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,10 +52,14 @@ public class MainActivity extends AppCompatActivity {
                 chooseDataForShow(ICHOOSEANIMALS);
                 break;
             case R.id.car_item:
-                chooseDataForShow(ICHOOSECARS);
+                //chooseDataForShow(ICHOOSECARS);
+                AnimationActivity.actionStart(this,null,null);
+                Toast.makeText(MainActivity.this,"AnimationActivity.actionStart(this,null,null);",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.food_item:
-                chooseDataForShow(ICHOOSEFOODS);
+                //chooseDataForShow(ICHOOSEFOODS);
+                AnimationActivity.actionStart(this,"Conan",PicMap.get("Conan"));
+                Toast.makeText(MainActivity.this,"AnimationActivity.actionStart(this,\"Conan\",PicMap.get(\"Conan\"));",Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

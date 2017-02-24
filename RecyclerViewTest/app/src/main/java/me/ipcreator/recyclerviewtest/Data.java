@@ -45,6 +45,8 @@ public class Data {
             put("Mango", Integer.toString(R.drawable.mango));
             put("Cat", Integer.toString(R.drawable.cat));
             put("Dog", Integer.toString(R.drawable.dog));
+            put("Anim", Integer.toString(R.drawable.giftest));
+            put("Conan", Integer.toString(R.drawable.conan));
         }
     };
 }

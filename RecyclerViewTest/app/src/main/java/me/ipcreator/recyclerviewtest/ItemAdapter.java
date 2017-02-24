@@ -1,6 +1,8 @@
 package me.ipcreator.recyclerviewtest;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +53,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
         final ViewHolder holder = new ViewHolder(view);
         final Context context = parent.getContext();
+        boolean bAnimation = false;
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
