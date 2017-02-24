@@ -37,23 +37,23 @@ public class GifDrawActivity extends AppCompatActivity implements View.OnClickLi
         String pic = intent.getStringExtra("IMG");
         this.setTitle(name);
 
-        //gifView.setGifImageType(GifView.GifImageType.COVER);
-        //gifView.setShowDimension(1000, 1000);
-        //GifDrawable gifFromResource = new GifDrawable( getResources(), R.drawable.anim );
         gifView.setImageResource(Integer.parseInt(pic));
 
         mc = new MediaController(this);
         mc.setMediaPlayer( ( GifDrawable ) gifView.getDrawable() );
         mc.setAnchorView( gifView );
-
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.gifImageView:
-                //finish();
-                mc.show();
+                if(mc.isShowing())
+                {
+                    mc.hide();
+                }else{
+                    mc.show();
+                }
                 break;
             default:
                 break;

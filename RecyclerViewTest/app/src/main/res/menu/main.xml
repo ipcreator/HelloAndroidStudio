@@ -10,14 +10,6 @@
         android:title="Animals"
         />
     <item
-        android:id="@+id/car_item"
-        android:title="Cars"
-        />
-    <item
-        android:id="@+id/food_item"
-        android:title="Foods"
-        />
-    <item
         android:id="@+id/gif_item"
         android:title="Gifs"
         />

@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int ICHOOSEFRUITS = 0;
     private static final int ICHOOSEANIMALS = 1;
-    private static final int ICHOOSECARS = 2;
-    private static final int ICHOOSEFOODS = 3;
-    private static final int ICHOOSEGIFS=4;
+    private static final int ICHOOSEGIFS=3;
 
     private List<Item> itemList = new ArrayList<>();
 
@@ -49,41 +47,38 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()){
+
             case R.id.fruit_item:
                 chooseDataForShow(ICHOOSEFRUITS);
                 break;
+
             case R.id.animal_item:
                 chooseDataForShow(ICHOOSEANIMALS);
                 break;
-            case R.id.car_item:
-                break;
-            case R.id.food_item:
-                break;
-            case R.id.gif_item:
 
+            case R.id.gif_item:
                 int size = GifMap.size();
                 Random random=new Random();
                 int result=random.nextInt(size);
-                String tempName = null;
-                String tempGif = null;
-                Object key = null;
-                Object value = null;
+                String nameString = null,gifString = null;
 
                 Set keys = GifMap.keySet( );
-
-                if(keys != null) {
-                    Iterator iterator = keys.iterator( );
-                    for(int i =0; i < result; i++ ) {
-                        key = iterator.next( );
-                        value = GifMap.get(key);
-                        iterator.hasNext( );
+                Iterator<Object> iterator = keys.iterator();
+                Object key=null,value=null;
+                int i = 0;
+                while(iterator.hasNext()){
+                    key = iterator.next( );
+                    if(i==result){
+                        break;
                     }
+                    i++;
                 }
-                tempName = key.toString();
-                tempGif = value.toString();
+                nameString = key.toString();
+                gifString = GifMap.get(key).toString();
 
-                GifDrawActivity.actionStart(this,tempName,tempGif);
+                GifDrawActivity.actionStart(this,nameString,gifString);
                 break;
+
             default:
                 break;
         }
@@ -93,25 +88,19 @@ public class MainActivity extends AppCompatActivity {
     private void chooseDataForShow(int choose){
 
         itemList.clear();
-
         initList(choose);
 
         switch (choose){
+            case ICHOOSEFRUITS:
+                this.setTitle("Roll and Pick"+"  Fruits");
+                break;
             case ICHOOSEANIMALS:
                 this.setTitle("Roll and Pick"+"  Animals");
                 break;
-            case ICHOOSECARS:
-                this.setTitle("Roll and Pick"+"  Cars");
-                break;
-            case ICHOOSEFOODS:
-                this.setTitle("Roll and Pick"+"  Foods");
-                break;
             case ICHOOSEGIFS:
-                this.setTitle("Roll and Pick"+"  Gifs");
                 break;
-            case ICHOOSEFRUITS:
             default:
-                this.setTitle("Roll and Pick"+"  Fruits");
+                break;
         }
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -125,6 +114,15 @@ public class MainActivity extends AppCompatActivity {
     {
         switch (choose){
 
+            case ICHOOSEFRUITS:
+                for(int i = 0; i<100; i++){
+                    for (Map.Entry<String, String> entry : Data.fruitListMap.entrySet()) {
+                        Item fruit = new Item(entry.getKey(), Integer.parseInt(entry.getValue()));
+                        itemList.add(fruit);
+                    }
+                }
+                break;
+
             case ICHOOSEANIMALS:
                 for(int i = 0; i<100; i++){
                     for (Map.Entry<String, String> entry : Data.animalListMap.entrySet()) {
@@ -134,23 +132,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
 
-            case ICHOOSECARS:
-                break;
-
-            case ICHOOSEFOODS:
-                break;
-
             case ICHOOSEGIFS:
                 break;
 
-            case ICHOOSEFRUITS:
             default:
-                for(int i = 0; i<100; i++){
-                    for (Map.Entry<String, String> entry : Data.fruitListMap.entrySet()) {
-                        Item fruit = new Item(entry.getKey(), Integer.parseInt(entry.getValue()));
-                        itemList.add(fruit);
-                    }
-                }
                 break;
         }
     }

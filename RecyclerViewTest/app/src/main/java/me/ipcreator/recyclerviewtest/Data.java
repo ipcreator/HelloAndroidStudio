@@ -51,7 +51,6 @@ public class Data {
     static final Map<String, String> GifMap = new HashMap<String, String>() {
         {
             put("Anim", Integer.toString(R.drawable.anim));
-            put("Conan", Integer.toString(R.drawable.conan));
             put("Giftest", Integer.toString(R.drawable.giftest));
             put("Giftest1", Integer.toString(R.drawable.giftest1));
             put("Giftest2", Integer.toString(R.drawable.giftest2));
@@ -61,7 +60,31 @@ public class Data {
             put("Gif10", Integer.toString(R.drawable.gif10));
             put("A", Integer.toString(R.drawable.a));
             put("Wind", Integer.toString(R.drawable.wind));
-
+            put("dogjump", Integer.toString(R.drawable.dogjump));
+            put("twodog", Integer.toString(R.drawable.twodog));
+            put("smokingcat", Integer.toString(R.drawable.smokingcat));
+            put("drinkingcat", Integer.toString(R.drawable.drinkingcat));
+            put("funningboy", Integer.toString(R.drawable.funningboy));
+            put("dancinggirl", Integer.toString(R.drawable.dancinggirl));
+            put("ballet", Integer.toString(R.drawable.birdman));
+            put("jiemao", Integer.toString(R.drawable.jiemao));
+            put("zhoulibo", Integer.toString(R.drawable.zhoulibo));
+            put("benshan", Integer.toString(R.drawable.benshan));
+            put("touch", Integer.toString(R.drawable.touch));
+            put("cock", Integer.toString(R.drawable.cock));
+            put("sleep", Integer.toString(R.drawable.sleep));
+            put("handsome", Integer.toString(R.drawable.handsome));
+            put("misswang", Integer.toString(R.drawable.misswang));
+            put("baby", Integer.toString(R.drawable.baby));
+            put("timg", Integer.toString(R.drawable.timg));
+            put("following", Integer.toString(R.drawable.following));
+            put("swaving", Integer.toString(R.drawable.swaving));
+            put("songxiaobao", Integer.toString(R.drawable.songxiaobao));
+            put("jordan1", Integer.toString(R.drawable.jordan1));
+            put("jordan2", Integer.toString(R.drawable.jordan2));
+            put("jordan23", Integer.toString(R.drawable.jordan23));
+            put("jordan4", Integer.toString(R.drawable.jordan4));
+            put("jordan5", Integer.toString(R.drawable.jordan5));
         }
     };
 }

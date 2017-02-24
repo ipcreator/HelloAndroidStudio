@@ -17,8 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".PicViewActivity" />
-        <activity android:name=".AnimationActivity" />
-        <activity android:name=".GifActivity" />
         <activity android:name=".GifDrawActivity"></activity>
     </application>
 
