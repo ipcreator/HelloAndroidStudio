@@ -1,10 +1,7 @@
 package me.ipcreator.recyclerviewtest;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Environment;
-import android.support.v7.app.AlertDialog;
 
+import android.os.Environment;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,11 +12,16 @@ import java.util.Set;
  * Created by user on 2/24/2017.
  */
 
-
-
 public class Data {
 
-    public static final float FLIP_DISTANCE = 50;
+    static  enum CHOOSE {
+        ICHOOSEFRUITS,
+        ICHOOSEANIMALS,
+        ICHOOSEGIFS
+    }
+
+    public static final float SLIDE_FLIP_DISTANCE = 100;
+    public static final float SLIDE_VELOCITY = 50;
     public static final String NOTIFY_MUSIC_FILE_PATH = "/system/media/audio/ringtones/Luna.ogg";
 
     static final Map<String, String> fruitListMap = new HashMap<String, String>() {
@@ -126,14 +128,11 @@ public class Data {
         return null;
     }
 
-    //TODO 从指定文件目录中取出随机文件，根据后缀过滤掉非gif文件
+    //TODO
     public static String GetRandomFileFromDirectory()
     {
-        //获取存储卡路径、构成保存文件的目标路径
         String fileName = "";
-        //SD卡具有读写权限、指定附件存储路径为SD卡上指定的文件夹
         fileName = Environment.getExternalStorageDirectory()+"Gif/"+"giftest2.gif";
-
         return fileName;
 
         /*
@@ -149,5 +148,4 @@ public class Data {
         }
         */
     }
-
 }

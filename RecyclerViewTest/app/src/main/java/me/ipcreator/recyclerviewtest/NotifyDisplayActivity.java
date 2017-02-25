@@ -14,7 +14,7 @@ public class NotifyDisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notify_display);
 
         NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        MyUtility.ShowInfoDialog(NotifyDisplayActivity.this,"NotificationManager value of manager", manager.toString());
+        MyUtility.ShowInfoDialog("NotificationManager value of manager", manager.toString());
         manager.cancel(1);
 
     }

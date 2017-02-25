@@ -14,7 +14,6 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v4.graphics.BitmapCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +23,6 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.jar.Manifest;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -155,7 +153,6 @@ public class CameraActivity extends AppCompatActivity {
 
                 Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"),Long.valueOf(docID));
                 imagePath = getImagePath(contentUri,null);
-
             }
 
         }else if("content".equalsIgnoreCase(uri.getScheme())){
@@ -165,7 +162,6 @@ public class CameraActivity extends AppCompatActivity {
         }else if("file".equalsIgnoreCase(uri.getScheme())){
 
             imagePath = uri.getPath();
-
         }
 
         displayImage(imagePath);

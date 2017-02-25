@@ -1,72 +1,53 @@
 package me.ipcreator.recyclerviewtest;
 
-import android.content.Intent;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 
-import static me.ipcreator.recyclerviewtest.Data.FLIP_DISTANCE;
 import static me.ipcreator.recyclerviewtest.Data.GifMap;
-import static me.ipcreator.recyclerviewtest.Data.PicMap;
+import static me.ipcreator.recyclerviewtest.Data.SLIDE_FLIP_DISTANCE;
+import static me.ipcreator.recyclerviewtest.Data.SLIDE_VELOCITY;
+import static me.ipcreator.recyclerviewtest.Data.CHOOSE.ICHOOSEANIMALS;
+import static me.ipcreator.recyclerviewtest.Data.CHOOSE.ICHOOSEFRUITS;
+import static me.ipcreator.recyclerviewtest.MyUtility.MyLog;
 
-public class MainActivity extends AppCompatActivity implements MyConstant{
-
-    private static CHOOSE gMyChoose =  MyConstant.CHOOSE.ICHOOSEFRUITS;
-    private static ACTIVITY gCurActivity =  MyConstant.ACTIVITY.MAIN;
-    private static GestureDetector mDetector = null;
-
-    private   CHOOSE ICHOOSEFRUITS = CHOOSE.ICHOOSEFRUITS;
-    private   CHOOSE ICHOOSEANIMALS = CHOOSE.ICHOOSEANIMALS;
-    private   CHOOSE ICHOOSEGIFS=CHOOSE.ICHOOSEANIMALS;
+public class MainActivity extends AppCompatActivity {
 
     private List<Item> itemList = new ArrayList<>();
-
-    private static final String TAG = "MainActivity";
-
+    private static Data.CHOOSE mMyChoose =  ICHOOSEFRUITS;
+    private static GestureDetector mDetector = null;
 
     class MyGestureListener implements View.OnTouchListener,OnGestureListener
     {
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
-            // TODO Auto-generated method stub
             return false;
         }
 
         @Override
         public void onShowPress(MotionEvent e) {
-            // TODO Auto-generated method stub
         }
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            // TODO Auto-generated method stub
             return false;
         }
 
         @Override
         public void onLongPress(MotionEvent e) {
-            // TODO Auto-generated method stub
         }
 
         /**
@@ -79,51 +60,29 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
 
             if (e1 != null ) {
                 if(e2 != null ){
-
-
-                    //在这里，可以判断左右手势，或者增加自己的手势判断
-                    //同时，在这里增加相应的手势处理函数来完成相应的界面切换效果
-                    if(e1.getX() - e2.getX() > 100 && Math.abs(velocityX) > 50 )
+                    if(e1.getX() - e2.getX() > SLIDE_FLIP_DISTANCE && Math.abs(velocityX) > SLIDE_VELOCITY )
                     {
-                        //animShowNextPage();
-                        Log.i("MYTAG", "向左左滑...");
+                        MyLog("SLIDETAG", "SLIDE to LEFT...");
 
-                    }
-                    else if(e2.getX() - e1.getX() > 100 && Math.abs(velocityX) > 50 )
-                    {
-                        //animShowPrePage();
-                        Log.i("MYTAG", "向右右滑...");
-                    }
-
-                    if (e1.getX() - e2.getX() > FLIP_DISTANCE) {
-
-                        Log.i("MYTAG", "向左滑...");
-
-                        if(gMyChoose == ICHOOSEFRUITS)
+                        if(mMyChoose == ICHOOSEFRUITS)
                         {
                             chooseDataForShow(ICHOOSEANIMALS);
 
                             return true;
 
-                        }else if(gMyChoose == ICHOOSEANIMALS){
+                        }else if(mMyChoose == ICHOOSEANIMALS){
 
-                            GifDrawActivity.actionStart(MainActivity.this,Data.GetRandomKeyFromGifMap(),GifMap.get(Data.GetRandomKeyFromGifMap()).toString());
+                            GifDrawActivity.actionStart(MainActivity.this,Data.GetRandomKeyFromGifMap(),GifMap.get(Data.GetRandomKeyFromGifMap()));
 
                             return true;
                         }
 
                     }
-                    if (e2.getX() - e1.getX() > FLIP_DISTANCE) {
+                    else if(e2.getX() - e1.getX() > SLIDE_FLIP_DISTANCE && Math.abs(velocityX) > SLIDE_VELOCITY )
+                    {
+                        MyLog("SLIDETAG", "SLIDE to RIGHT...");
 
-                        Log.i("MYTAG", "向右滑...");
-
-                        /*
-                        if(gMyChoose == ICHOOSEFRUITS)
-                        {
-                            Intent intent = new Intent(MainActivity.this,CameraActivity.class);
-                            startActivity(intent);
-
-                        }else */if(gMyChoose == ICHOOSEANIMALS)
+                        if(mMyChoose == ICHOOSEANIMALS)
                         {
                             chooseDataForShow(ICHOOSEFRUITS);
 
@@ -131,12 +90,12 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
                         }
                     }
 
-                    if (e1.getY() - e2.getY() > FLIP_DISTANCE) {
-                        Log.i("MYTAG", "向上滑...");
+                    if (e1.getY() - e2.getY() > SLIDE_FLIP_DISTANCE) {
+                        MyLog("SLIDETAG", "SLIDE to DOWN...");
                         return true;
                     }
-                    if (e2.getY() - e1.getY() > FLIP_DISTANCE) {
-                        Log.i("MYTAG", "向下滑...");
+                    if (e2.getY() - e1.getY() > SLIDE_FLIP_DISTANCE) {
+                        MyLog("SLIDETAG", "SLIDE to UP...");
                         return true;
                     }
                 }
@@ -146,29 +105,19 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
 
         @Override
         public boolean onDown(MotionEvent e) {
-            // TODO Auto-generated method stub
             return false;
         }
 
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
 
-        //在类的implements中增加了View.OnTouchListener,增加这个也是为了让RecyclerView可以使用这个监听函数，
-        // 同时其它的View也可以使用这个监听函数。
-        public boolean onTouch(View v, MotionEvent event)
-        {
-            //这里面第一个参数v，就是用户单击的那个view，
-            //在本例中就是那View2中的TextView
-            //同时，你也可以使用这个参数来判定用户单击了哪一个View
-            if(event.getAction() == MotionEvent.ACTION_DOWN)
-            {
-                //如有需要，可以在这样增加相关的代码进行处理
-            }
-            else if(event.getAction() == MotionEvent.ACTION_UP)
-            {
-            }
+            /*
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            }*/
             mDetector.onTouchEvent(event);
             return false;
         }
-
     }
 
     @Override
@@ -188,19 +137,16 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
         recyclerView.setOnTouchListener(new MyGestureListener());
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()){
-
             case R.id.fruit_item:
                 chooseDataForShow(ICHOOSEFRUITS);
                 break;
@@ -210,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
                 break;
 
             case R.id.gif_item:
-                GifDrawActivity.actionStart(this,Data.GetRandomKeyFromGifMap(),GifMap.get(Data.GetRandomKeyFromGifMap()).toString());
+                GifDrawActivity.actionStart(this,Data.GetRandomKeyFromGifMap(),GifMap.get(Data.GetRandomKeyFromGifMap()));
                 break;
 
             case R.id.notice_item:
@@ -235,21 +181,19 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
         return true;
     }
 
-    private void chooseDataForShow(CHOOSE choose){
+    private void chooseDataForShow(Data.CHOOSE choose){
 
         itemList.clear();
         initList(choose);
 
         switch (choose){
             case ICHOOSEFRUITS:
-                gMyChoose = ICHOOSEFRUITS;
+                mMyChoose = ICHOOSEFRUITS;
                 this.setTitle("Roll and Pick"+"  Fruits");
                 break;
             case ICHOOSEANIMALS:
-                gMyChoose = ICHOOSEANIMALS;
+                mMyChoose = ICHOOSEANIMALS;
                 this.setTitle("Roll and Pick"+"  Animals");
-                break;
-            case ICHOOSEGIFS:
                 break;
             default:
                 break;
@@ -262,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
         recyclerView.setAdapter(itemAdapter);
     }
 
-    private void initList(CHOOSE choose)
+    private void initList(Data.CHOOSE choose)
     {
         switch (choose){
 
@@ -283,10 +227,6 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
                     }
                 }
                 break;
-
-            case ICHOOSEGIFS:
-                break;
-
             default:
                 break;
         }

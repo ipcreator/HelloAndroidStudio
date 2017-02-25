@@ -2,17 +2,14 @@ package me.ipcreator.recyclerviewtest;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-public class PicViewActivity extends AppCompatActivity implements View.OnClickListener, NestedScrollView.OnScrollChangeListener{
+public class PicViewActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView imageView;
-    private static final String TAG = "PicViewActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +44,5 @@ public class PicViewActivity extends AppCompatActivity implements View.OnClickLi
             default:
                 break;
         }
-    }
-    
-    @Override
-    public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-        Log.d(TAG, "onScrollChange: ");
-        
     }
 }

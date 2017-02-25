@@ -6,18 +6,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import java.io.File;
-
-import static me.ipcreator.recyclerviewtest.Data.NOTIFY_MUSIC_FILE_PATH;
 
 public class NotifyActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -58,9 +51,10 @@ public class NotifyActivity extends AppCompatActivity implements View.OnClickLis
 
                 Notification notification = new NotificationCompat.Builder(this)
                         .setContentTitle("Title")
-                        //.setContentText("Content")
-                        .setStyle(new NotificationCompat.BigTextStyle().bigText("Learn how to biuld notifications, send and sync data, and use Voice actions." +
-                                "Get the official Android IDE and developer tools to build apps for Android."))
+                        .setContentText("Learn how to biuld notifications, send and sync data, and use Voice actions.\" +\n" +
+                               "                                \"Get the official Android IDE and developer tools to build apps for Android.")
+                        //.setStyle(new NotificationCompat.BigTextStyle().bigText("Learn how to biuld notifications, send and sync data, and use Voice actions." +
+                        //        "Get the official Android IDE and developer tools to build apps for Android."))
                         .setWhen(System.currentTimeMillis())
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))

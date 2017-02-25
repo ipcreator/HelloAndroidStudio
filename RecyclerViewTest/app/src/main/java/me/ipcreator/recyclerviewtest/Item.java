@@ -5,8 +5,8 @@ package me.ipcreator.recyclerviewtest;
  */
 
 public class Item {
-    private String name;
-    private int imageId;
+    private String name=null;
+    private int imageId=0;
 
     public Item(String name, int imageId){
         this.name = name;
@@ -16,6 +16,7 @@ public class Item {
     public String getName(){
         return name;
     }
+
     public int getImageId(){
         return imageId;
     }
