@@ -1,13 +1,22 @@
 package me.ipcreator.recyclerviewtest;
 
+import android.os.Environment;
+
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 /**
  * Created by user on 2/24/2017.
  */
 
+
+
 public class Data {
+
+    public static final float FLIP_DISTANCE = 50;
 
     static final Map<String, String> fruitListMap = new HashMap<String, String>() {
         {
@@ -87,4 +96,53 @@ public class Data {
             put("jordan5", Integer.toString(R.drawable.jordan5));
         }
     };
+
+    public static String GetRandomKeyFromGifMap()
+    {
+        int size = GifMap.size();
+        Random random=new Random();
+        int result=random.nextInt(size);
+
+        Set keys = GifMap.keySet( );
+        Iterator<Object> iterator = keys.iterator();
+        Object key=null;
+        int i = 0;
+        while(iterator.hasNext()){
+            key = iterator.next( );
+            if(i==result){
+                break;
+            }
+            i++;
+        }
+        if (key != null)
+        {
+            return key.toString();
+        }
+
+        return null;
+    }
+
+    //TODO 从指定文件目录中取出随机文件，根据后缀过滤掉非gif文件
+    public static String GetRandomFileFromDirectory()
+    {
+        //获取存储卡路径、构成保存文件的目标路径
+        String fileName = "";
+        //SD卡具有读写权限、指定附件存储路径为SD卡上指定的文件夹
+        fileName = Environment.getExternalStorageDirectory()+"/Gif/"+"giftest2.gif";
+
+        return fileName;
+
+        /*
+         GifDrawable gifDrawable;
+        //Uri
+        ContentResolver contentResolver = getContentResolver();
+        Uri uri = Uri.parse("http://olwhe6eha.bkt.clouddn.com/benshan.gif");
+        try {
+            gifDrawable = new GifDrawable( contentResolver,  uri);
+            gifView.setImageDrawable(gifDrawable);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
+    }
 }
