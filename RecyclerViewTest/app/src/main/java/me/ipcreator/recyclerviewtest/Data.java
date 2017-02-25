@@ -1,6 +1,9 @@
 package me.ipcreator.recyclerviewtest;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,6 +20,7 @@ import java.util.Set;
 public class Data {
 
     public static final float FLIP_DISTANCE = 50;
+    public static final String NOTIFY_MUSIC_FILE_PATH = "/system/media/audio/ringtones/Luna.ogg";
 
     static final Map<String, String> fruitListMap = new HashMap<String, String>() {
         {
@@ -128,7 +132,7 @@ public class Data {
         //获取存储卡路径、构成保存文件的目标路径
         String fileName = "";
         //SD卡具有读写权限、指定附件存储路径为SD卡上指定的文件夹
-        fileName = Environment.getExternalStorageDirectory()+"/Gif/"+"giftest2.gif";
+        fileName = Environment.getExternalStorageDirectory()+"Gif/"+"giftest2.gif";
 
         return fileName;
 
@@ -145,4 +149,5 @@ public class Data {
         }
         */
     }
+
 }

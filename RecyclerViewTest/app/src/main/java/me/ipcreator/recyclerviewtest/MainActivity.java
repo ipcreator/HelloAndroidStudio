@@ -79,6 +79,22 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
 
             if (e1 != null ) {
                 if(e2 != null ){
+
+
+                    //在这里，可以判断左右手势，或者增加自己的手势判断
+                    //同时，在这里增加相应的手势处理函数来完成相应的界面切换效果
+                    if(e1.getX() - e2.getX() > 100 && Math.abs(velocityX) > 50 )
+                    {
+                        //animShowNextPage();
+                        Log.i("MYTAG", "向左左滑...");
+
+                    }
+                    else if(e2.getX() - e1.getX() > 100 && Math.abs(velocityX) > 50 )
+                    {
+                        //animShowPrePage();
+                        Log.i("MYTAG", "向右右滑...");
+                    }
+
                     if (e1.getX() - e2.getX() > FLIP_DISTANCE) {
 
                         Log.i("MYTAG", "向左滑...");
@@ -86,23 +102,35 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
                         if(gMyChoose == ICHOOSEFRUITS)
                         {
                             chooseDataForShow(ICHOOSEANIMALS);
+
+                            return true;
+
                         }else if(gMyChoose == ICHOOSEANIMALS){
 
                             GifDrawActivity.actionStart(MainActivity.this,Data.GetRandomKeyFromGifMap(),GifMap.get(Data.GetRandomKeyFromGifMap()).toString());
+
+                            return true;
                         }
 
-                        return true;
                     }
                     if (e2.getX() - e1.getX() > FLIP_DISTANCE) {
 
                         Log.i("MYTAG", "向右滑...");
 
-                        if(gMyChoose == ICHOOSEANIMALS)
+                        /*
+                        if(gMyChoose == ICHOOSEFRUITS)
+                        {
+                            Intent intent = new Intent(MainActivity.this,CameraActivity.class);
+                            startActivity(intent);
+
+                        }else */if(gMyChoose == ICHOOSEANIMALS)
                         {
                             chooseDataForShow(ICHOOSEFRUITS);
+
+                            return true;
                         }
-                        return true;
                     }
+
                     if (e1.getY() - e2.getY() > FLIP_DISTANCE) {
                         Log.i("MYTAG", "向上滑...");
                         return true;
@@ -123,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
         }
 
 
+        //在类的implements中增加了View.OnTouchListener,增加这个也是为了让RecyclerView可以使用这个监听函数，
+        // 同时其它的View也可以使用这个监听函数。
         public boolean onTouch(View v, MotionEvent event)
         {
             //这里面第一个参数v，就是用户单击的那个view，
@@ -158,13 +188,13 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
         recyclerView.setOnTouchListener(new MyGestureListener());
     }
 
-    /*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
     }
-    */
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -181,6 +211,22 @@ public class MainActivity extends AppCompatActivity implements MyConstant{
 
             case R.id.gif_item:
                 GifDrawActivity.actionStart(this,Data.GetRandomKeyFromGifMap(),GifMap.get(Data.GetRandomKeyFromGifMap()).toString());
+                break;
+
+            case R.id.notice_item:
+                NotifyActivity.actionStart(this,null,null);
+                break;
+
+            case R.id.camera_item:
+                CameraActivity.actionStart(this,null,null);
+                break;
+
+            case R.id.music_item:
+                MusicActivity.actionStart(this,null,null);
+                break;
+
+            case R.id.video_item:
+                MediaActivity.actionStart(this,null,null);
                 break;
 
             default:

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.ipcreator.recyclerviewtest">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -17,9 +21,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".PicViewActivity" />
-        <activity android:name=".GifDrawActivity"></activity>
-    </application>
+        <activity android:name=".GifDrawActivity" />
+        <activity android:name=".CameraActivity" />
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="me.ipcreator.recyclerviewtest.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+            >
+        </provider>
+        >
+        <activity android:name=".MediaActivity" />
+        <activity android:name=".MusicActivity" />
+        <activity android:name=".NotifyActivity" />
+        <activity android:name=".NotifyDisplayActivity"></activity>
+    </application>
 
 </manifest>

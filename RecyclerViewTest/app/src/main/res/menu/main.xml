@@ -13,4 +13,20 @@
         android:id="@+id/gif_item"
         android:title="Gifs"
         />
+    <item
+        android:id="@+id/notice_item"
+        android:title="Notice"
+        />
+    <item
+        android:id="@+id/camera_item"
+        android:title="Camera"
+        />
+    <item
+        android:id="@+id/music_item"
+        android:title="Music"
+        />
+    <item
+        android:id="@+id/video_item"
+        android:title="Video"
+        />
 </menu>
